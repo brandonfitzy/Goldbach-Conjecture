@@ -9,20 +9,24 @@
 int isprime(int a);
 
 int main(){
-	int j;
-	for (j=4; j<20; j++){
-		if (isprime(j)==0){
-		    printf("%d", j);
-		    continue;
-		}
+    int c=31;
+    int primes[10];
+    int i;
+    for (i=2;i<10;i++){
+      if (isprime(i)==0){
+           primes[i]=i;
+           printf("%d",i);
+	      printf("%d",isprime(i));
+        }
     }
+	
 }
 
 /*Naive prime checker*/
 int isprime(int a){
     int i;
     int f;
-    for (i=2; i<a-1; i++){
+    for (i=2; i<a; i++){
         if (a%i==0){
             f=1;
         }
