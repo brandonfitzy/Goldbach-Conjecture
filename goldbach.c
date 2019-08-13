@@ -4,36 +4,54 @@
 
 /*0-true 1-false*/
 
-#include <stdio.h>
+#include <stdio.h> //for the print function
+#include <string.h>
 
+//prime checker function declaration
 int isprime(int a);
+int dotheysumto(int x, int y, int z);
 
 int main(){
-    int c=31;
-    int primes[10];
-    int i;
-    for (i=2;i<10;i++){
-      if (isprime(i)==0){
-           primes[i]=i;
-           printf("%d",i);
-	      printf("%d",isprime(i));
+    int n = 1000; //number for the conjecture
+    int primes[n/2]; //empty array of primes
+    int j; int i=0;
+    //checking all the number less than the number if they are prime and adding it to primes[]
+    for (j=2; j<n; j++){
+        if (j==2){
+            primes[i]=2;
+            i++;
+        }
+        if (isprime(j)==0){
+            primes[i]=j;
+            i++;
         }
     }
-	
+    //checking if two primes sum to n and printing them if they do
+    int k; int l;
+    for (k=0;k<n/2;k++){
+        for (l=k;l<n/2;l++){
+            if (dotheysumto(primes[k],primes[l],n)==0){
+                printf("%d + %d = %d \n", primes[k],primes[l],n);
+            }
+        }
+    }
 }
 
-/*Naive prime checker*/
+//naive prime checker
 int isprime(int a){
-    int i;
-    int f;
-    for (i=2; i<a; i++){
+    int i; int b=0;
+    for (i=2;i<a;i++){
         if (a%i==0){
-            f=1;
+            b=1;
         }
     }
-    if (f==1){
-        return 1;
-    } else {
+    return b;
+}
+
+int dotheysumto(int x, int y, int z){
+    if (x+y==z){
         return 0;
+    } else {
+        return 1;
     }
 }
