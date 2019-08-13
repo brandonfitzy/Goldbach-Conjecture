@@ -12,7 +12,9 @@ int isprime(int a);
 int dotheysumto(int x, int y, int z);
 
 int main(){
-    int n = 1000; //number for the conjecture
+    int n;
+	printf("Enter the number for the conjecture: \n");
+	scanf("%d", &n);
     int primes[n/2]; //empty array of primes
     int j; int i=0;
     //checking all the number less than the number if they are prime and adding it to primes[]
@@ -27,6 +29,7 @@ int main(){
         }
     }
     //checking if two primes sum to n and printing them if they do
+    printf("These are the prime pairs that sum to %d", n);
     int k; int l;
     for (k=0;k<n/2;k++){
         for (l=k;l<n/2;l++){
