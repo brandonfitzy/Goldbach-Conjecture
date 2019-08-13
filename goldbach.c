@@ -15,29 +15,35 @@ int main(){
     int n;
 	printf("Enter the number for the conjecture: \n");
 	scanf("%d", &n);
-    int primes[n/2]; //empty array of primes
-    int j; int i=0;
-    //checking all the number less than the number if they are prime and adding it to primes[]
-    for (j=2; j<n; j++){
-        if (j==2){
-            primes[i]=2;
-            i++;
-        }
-        if (isprime(j)==0){
-            primes[i]=j;
-            i++;
-        }
-    }
-    //checking if two primes sum to n and printing them if they do
-    printf("These are the prime pairs that sum to %d", n);
-    int k; int l;
-    for (k=0;k<n/2;k++){
-        for (l=k;l<n/2;l++){
-            if (dotheysumto(primes[k],primes[l],n)==0){
-                printf("%d + %d = %d \n", primes[k],primes[l],n);
+	if (n<3) {
+	    printf("The number must be greater than 2.");
+	} else if (n%2!=0){
+	    printf("The number must be even.");
+	} else {
+        int primes[n/2]; //empty array of primes
+        int j; int i=0;
+        //checking all the number less than the number if they are prime and adding it to primes[]
+        for (j=2; j<n; j++){
+            if (j==2){
+                primes[i]=2;
+                i++;
+            }
+            if (isprime(j)==0){
+                primes[i]=j;
+                i++;
             }
         }
-    }
+        //checking if two primes sum to n and printing them if they do
+        printf("These are the prime pairs that sum to %d \n", n);
+        int k; int l;
+        for (k=0;k<n/2;k++){
+            for (l=k;l<n/2;l++){
+                if (dotheysumto(primes[k],primes[l],n)==0){
+                    printf("%d + %d = %d \n", primes[k],primes[l],n);
+                }
+            }
+        }
+	}
 }
 
 //naive prime checker
